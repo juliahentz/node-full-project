@@ -1,9 +1,15 @@
 var server = require('./server/server');
+var database = require('./server/database');
 
 function init(){
 
-    server.start();
+    database.connect(function(){
 
-};
+        server.start();
+        require('./server/models/project');
+
+    });
+
+}
 
 init();
